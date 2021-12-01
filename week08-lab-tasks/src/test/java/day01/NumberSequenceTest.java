@@ -16,6 +16,7 @@ class NumberSequenceTest {
 
     @Test
     void testMakeAverage() {
+        assertEquals(10, numSeq.getIntList().size());
         System.out.println(numSeq.makeAverage());
         System.out.println(numSeq.getIntList());
         System.out.println(numSeq.closeToAverage(3));
