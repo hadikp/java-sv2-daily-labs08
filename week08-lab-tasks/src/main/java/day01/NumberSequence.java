@@ -30,10 +30,10 @@ public class NumberSequence {
 
     public List<Integer> closeToAverage(int value) {
         List<Integer> resulList = new ArrayList<>();
-        double sum = makeAverage();
-        System.out.println(sum);
+        double average = makeAverage();
+        System.out.println(average);
         for (int i: intList) {
-            if (Math.abs(i - sum) < value) {
+            if (Math.abs(i - average) < value) {
                 resulList.add(i);
             }
         }
