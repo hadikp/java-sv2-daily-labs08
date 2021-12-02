@@ -8,20 +8,25 @@ import java.util.List;
 
 public class FileReader {
 
-    private List<String> fileWeather = new ArrayList<>();
+    private String findSmallestDifference;
 
     public int findSmallestTemperatureSpread(String fileName) {
         List<String> fileWeather = fileRead(fileName);
-        int maxTempDifference = 0;
+        int minTempDifference = 1000;
+        int minDay = 0;
+
         for (int i = 2; i < fileWeather.size()-1; i++) {
             int day = Integer.parseInt(fileWeather.get(i).substring(2, 4).trim());
             int max = Integer.parseInt(fileWeather.get(i).substring(6, 8).trim());
             int min = Integer.parseInt(fileWeather.get(i).substring(12, 14));
-            if ((max - min) > maxTempDifference) {
-                maxTempDifference = max -min;
+
+            int spread = max - min;
+            if ((spread) < minTempDifference) {
+                minTempDifference = spread;
+                minDay = day;
             }
         }
-        return maxTempDifference;
+        return minDay;
     }
 
     private List<String> fileRead(String fileName) {
@@ -34,9 +39,5 @@ public class FileReader {
         }
         return fileList;
 
-    }
-
-    public List<String> getFileWeather() {
-        return fileWeather;
     }
 }
