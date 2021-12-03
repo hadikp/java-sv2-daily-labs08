@@ -10,9 +10,9 @@ class FootballReaderTest {
     void testDifference() {
         FootballReader footballReader = new FootballReader();
         String file = "football.dat";
-        String fileName = "src/test/resources/football.dat";
-        footballReader.findSmallestDifference(fileName);
-       // System.out.println(footballReader.findSmallestDifference(fileName));
+        String fileName = "src/test/resources/" + file;
+        assertEquals("Aston_Villa", footballReader.findSmallestDifference(fileName));
+
     }
 
 }
