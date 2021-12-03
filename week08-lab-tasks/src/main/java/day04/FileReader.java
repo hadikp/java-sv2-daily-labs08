@@ -1,5 +1,6 @@
 package day04;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,7 +9,28 @@ import java.util.List;
 
 public class FileReader {
 
-    private String findSmallestDifference;
+    public String  findSmallestDifference(String fileName) {
+        List<String> fileFootball = fileRead(fileName);
+        int minDifference = 1000;
+        String team = "";
+
+        for (int i = 1; i < fileFootball.size(); i++) {
+            if (i == 18) {
+                continue;
+            }
+            int F = Integer.parseInt(fileFootball.get(i).substring(43, 45).trim());
+            int A = Integer.parseInt(fileFootball.get(i).substring(50, 52).trim());
+            String  teamList = fileFootball.get(i).substring(7, 23).trim();
+
+            int difference = Math.abs(F - A);
+            if ((difference) < minDifference) {
+                minDifference = difference;
+                team = teamList;
+            }
+
+        }
+        return team;
+    }
 
     public int findSmallestTemperatureSpread(String fileName) {
         List<String> fileWeather = fileRead(fileName);
